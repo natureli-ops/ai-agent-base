@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Base - Interactive Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>🤖 AI Agent Base - Management Dashboard</h1>
+                <p>Dynamic Cost-Optimized Agent Management System</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-badge">
+                    <span class="label">Active Agents:</span>
+                    <span class="value" id="activeAgents">6</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="label">System Status:</span>
+                    <span class="value status-active">🟢 Operational</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <button class="nav-btn active" data-tab="overview">📊 Overview</button>
+            <button class="nav-btn" data-tab="agents">👥 Agent Registry</button>
+            <button class="nav-btn" data-tab="tasks">📋 Task Manager</button>
+            <button class="nav-btn" data-tab="costs">💰 Cost Analysis</button>
+            <button class="nav-btn" data-tab="performance">📈 Performance</button>
+            <button class="nav-btn" data-tab="settings">⚙️ Settings</button>
+        </nav>
+
+        <div class="dashboard-content">
+            <section id="overview-tab" class="tab-content active">
+                <div class="section-header">
+                    <h2>System Overview</h2>
+                    <button class="refresh-btn" onclick="refreshDashboard()">🔄 Refresh</button>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Total Tasks</h3>
+                        <p class="metric-value" id="totalTasks">0</p>
+                        <p class="metric-label">All time</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Success Rate</h3>
+                        <p class="metric-value" id="successRate">0%</p>
+                        <p class="metric-label">Completed successfully</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Total Cost</h3>
+                        <p class="metric-value" id="totalCost">$0.00</p>
+                        <p class="metric-label">USD equivalent</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Avg Tokens/Task</h3>
+                        <p class="metric-value" id="avgTokens">0</p>
+                        <p class="metric-label">System average</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="agents-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Agent Registry</h2>
+                </div>
+                <div class="agents-container" id="agentsList"></div>
+            </section>
+
+            <section id="tasks-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Task Management</h2>
+                </div>
+                <table class="task-table">
+                    <thead>
+                        <tr>
+                            <th>Task ID</th>
+                            <th>Agent</th>
+                            <th>Status</th>
+                            <th>Tokens</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tasksList"></tbody>
+                </table>
+            </section>
+
+            <section id="costs-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Cost Analysis</h2>
+                </div>
+                <div id="costAnalysis">Loading cost data...</div>
+            </section>
+
+            <section id="performance-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Performance Metrics</h2>
+                </div>
+                <table class="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Agent Name</th>
+                            <th>Success Rate</th>
+                            <th>Tasks</th>
+                            <th>Cost Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="performanceRanking"></tbody>
+                </table>
+            </section>
+
+            <section id="settings-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-form">
+                    <button class="save-btn" onclick="saveSettings()">💾 Save Settings</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
